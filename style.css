@@ -1,0 +1,127 @@
+/* Custom styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    /* Animation for page load */
+    animation: page-fade-in 0.6s ease-out;
+}
+
+/* Custom scrollbar for a better look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1f1f1f;
+}
+::-webkit-scrollbar-thumb {
+    background: #f5c518; /* Using yellow from the site's palette */
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #e6b800;
+}
+
+.anime-card-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.section-title {
+    border-left: 4px solid #f5c518; /* Using yellow from the site's palette */
+    padding-left: 0.75rem;
+}
+
+/* --- NEW ANIMATIONS & STYLES --- */
+
+/* Page Load Animation */
+@keyframes page-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Header scroll effect */
+header.scrolled {
+    background-color: rgba(31, 41, 55, 0.95); /* from bg-gray-800/80 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Animation */
+#signInModal {
+    transition: opacity 0.3s ease;
+}
+#signInModal > div { /* The modal's inner content box */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: scale(0.95);
+    opacity: 0;
+}
+#signInModal:not(.hidden) > div {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Specific class for closing animation */
+#signInModal.is-closing > div {
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+/* Tab Content Fade-in Animation */
+@keyframes content-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Apply animation to tab content that is NOT hidden */
+#tab-content > div:not(.hidden) {
+    animation: content-fade-in 0.4s ease-out;
+}
+
+/* Scroll-to-Top Button */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f5c518; /* yellow-400 */
+    color: #1f2937; /* gray-800 */
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+#scrollToTopBtn.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+#scrollToTopBtn:hover {
+    background-color: #e6b800; /* yellow-500 */
+}
+
+/* Section Fade-in-on-Scroll */
+section.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+section.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
